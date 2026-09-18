@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Store product listing in AmarShop",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nameBn": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "descriptionBn": { "type": "string" },
+        "descriptionEn": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "category": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "stock": { "type": "number" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "isExpressDelivery": { "type": "boolean" },
+        "featured": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "reviews": { "type": "array" }
+      },
+      "required": ["id", "nameBn", "nameEn", "price", "category", "stock"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order placed in AmarShop",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" },
+        "city": { "type": "string" },
+        "notes": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "shippingFee": { "type": "number" },
+        "discount": { "type": "number" },
+        "total": { "type": "number" },
+        "isExpressDelivery": { "type": "boolean" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "transactionId": { "type": "string" },
+        "orderStatus": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "estimatedDelivery": { "type": "string" },
+        "courierName": { "type": "string" },
+        "trackingNumber": { "type": "string" }
+      },
+      "required": ["id", "customerName", "phone", "items", "total", "orderStatus", "createdAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile in AmarShop",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "role": { "type": "string" },
+        "twoFactorEnabled": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "required": ["id", "name", "role"]
+    },
+    "EmailVerification": {
+      "title": "EmailVerification",
+      "description": "4-digit email verification code for registration and password reset",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "code": { "type": "string" },
+        "purpose": { "type": "string" },
+        "expiresAt": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "verified": { "type": "boolean" }
+      },
+      "required": ["id", "email", "code", "purpose", "expiresAt"]
+    }
+  },
+  "firestore": {
+    "products": {
+      "entity": "Product",
+      "description": "Public products catalog"
+    },
+    "orders": {
+      "entity": "Order",
+      "description": "Orders collection"
+    },
+    "users": {
+      "entity": "User",
+      "description": "Users and admin profiles"
+    },
+    "email_verifications": {
+      "entity": "EmailVerification",
+      "description": "Email 4-digit OTP verification codes"
+    }
+  }
+}

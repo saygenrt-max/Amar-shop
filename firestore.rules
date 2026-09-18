@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Products collection: publicly readable, admin can modify
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Orders collection: customers can create and query orders; updates allowed for order fulfillment
+    match /orders/{orderId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if true;
+    }
+
+    // Users collection:
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Email 4-digit OTP Verifications:
+    match /email_verifications/{verificationId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}

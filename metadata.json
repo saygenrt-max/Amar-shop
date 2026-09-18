@@ -1,0 +1,6 @@
+{
+  "name": "AmarShop - E-Commerce & Admin Platform",
+  "description": "Bilingual Bengali & English e-commerce store with real-time Firebase Firestore cloud database, secure payment gateways, live order tracking, customer reviews, AI support chatbot, 2FA authentication, and admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
